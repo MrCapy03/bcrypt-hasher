@@ -19,7 +19,7 @@ This utility was developed by **@mrcapy03**. Feel free to reach out with any que
 # How to Use
 
 ### Prerequisites:
-- **bcrypt** library needs to be installed. If it's not already installed, the script will automatically check for it and install it for you.
+- **bcrypt** library needs to be installed. If it's not already installed, the script will automatically check for it and install it for you (Only in Windows).
 
 ## Windows
 
