@@ -11,22 +11,30 @@ def hash_password(password: str, salt_rounds: int = 10):
     return hashed_password.decode('utf-8')
 
 # Example usage
-username = input("Please input your username:")
-password = input("Please input your password:") # This should be the password you want to hash
+username = input("Please input your username: ")
+password = input("Please input your password: ")  # This should be the password you want to hash
 hashed_password = hash_password(password)
 
-def get_unique_filename(filename):
+def get_unique_filename(directory, filename):
+    # Ensure the output directory exists
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
+    # Generate a unique filename inside the specified directory
     base, extension = os.path.splitext(filename)
     counter = 1
-    new_filename = filename
+    new_filename = os.path.join(directory, filename)  # Start with the original filename in the directory
     while os.path.exists(new_filename):
-        new_filename = f"{base}({counter}){extension}"
+        new_filename = os.path.join(directory, f"{base}({counter}){extension}")
         counter += 1
     return new_filename
 
+# Define the output directory
+output_dir = 'output'
+
 # Create unique filenames for both output files
-output_filename = get_unique_filename('output.txt')
-private_output_filename = get_unique_filename('PRIVATE_OUTPUT.txt')
+output_filename = get_unique_filename(output_dir, 'output.txt')
+private_output_filename = get_unique_filename(output_dir, 'PRIVATE_OUTPUT.txt')
 
 # Write to the unique output.txt file
 with open(output_filename, 'w') as f:
@@ -40,3 +48,6 @@ with open(private_output_filename, 'w') as f:
     f.write("Username: " + username + "\n")
     f.write("Password: " + password + "\n")
     f.write("Hashed Password: " + hashed_password + "\n")
+
+print(f"Output saved to {output_filename}")
+print(f"Private output saved to {private_output_filename}")
