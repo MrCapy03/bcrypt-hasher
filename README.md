@@ -77,3 +77,4 @@ Hashed Password: $2b$10$T9rjG/x5Zv3XNdwTjH0Foe9p/0mbHzVpFlQmc9qKgP5O1n8tPwiTa
 # License:
 
 ## GNU AGPLv3
+More info can be found in LICENSE file.
